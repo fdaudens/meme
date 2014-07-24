@@ -14,9 +14,22 @@
         <option value="bigger" data-height="38">bigger</option>
         <option value="huge" data-height="50">huge</option>
       </select>
+      <div id="fontweight">
+        <input type="radio" name="fontweight" value="normal" id="fontweight-normal" checked="checked">
+          <label for="fontweight-normal" id="fontweight-normal-label">Normal</label>
+        <input type="radio" name="fontweight" value="bold" id="fontweight-bold">
+          <label for="fontweight-bold" id="fontweight-bold-label">Bold</label>
+        <input type="radio" name="fontweight" value="italic" id="fontweight-italic">
+          <label for="fontweight-italic" id="fontweight-italic-label">Italic</label>
+        <input type="radio" name="fontweight" value="bolditalic" id="fontweight-bolditalic">
+          <label for="fontweight-bolditalic" id="fontweight-bolditalic-label">B/I</label>
+      </div>
       <select id="fontfamily">
         <option value="" disabled>Select a font</option>
-        <option value="Helvetica" selected>Helvetica</option>
+        <option value="Myriad Pro" selected>Myriad Pro</option>
+        <option value="Meta Serif OT">Meta Serif OT</option>
+        <option value="Meta Serif Offc">Meta Serif Offc</option>
+        <option value="Helvetica">Helvetica</option>
         <option value="Helvetica Neue">Helvetica Neue</option>
         <option value="Comic Sans MS">Comic Sans MS</option>
       </select>
@@ -27,8 +40,8 @@
     <fieldset>
       <label class="left" for="overlay">Overlay: </label>
       <div class="overlay overlay-black" data-color="black">x</div>
-      <div class="overlay overlay-orange" data-color="orange">x</div>
-      <div class="overlay overlay-blue overlay-active" data-color="blue">x</div>
+      <div class="overlay overlay-darkblue" data-color="darkblue">x</div>
+      <div class="overlay overlay-grey overlay-active" data-color="grey">x</div>
     </fieldset>
     <fieldset>
       <select id="alignment">
@@ -41,5 +54,15 @@
       <input id="shadow" name="shadow" type="checkbox">
       <label for="shadow">Highlight text</label>
     </fieldset>
+    <div id="logo">
+    <label style="font-weight:bold">Logo</label>
+    <br>
+      <input type="radio" name="logo" value="light" id="logo-light" checked="checked">
+        <label for="logo-light" id="logo-light-label">Light</label>
+      <input type="radio" name="logo" value="dark" id="logo-dark">
+        <label for="logo-dark" id="logo-dark-label">Dark</label>
+      <input type="radio" name="logo" value="none" id="logo-none">
+        <label for="logo-none" id="logo-none-label">None</label>
+    </div>
   </form>
 </div>

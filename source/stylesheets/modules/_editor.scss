@@ -30,6 +30,44 @@ $editor-width: 345px;
   #fontsize {
     width: 100%;
   }
+  #fontsize {
+    margin-bottom: 0
+  }
+  #fontweight {
+    margin: 0;
+  }
+  #fontweight label {
+    display: inline;
+    margin-left: 0em;
+    margin-right: 0.5em;
+  }
+  #fontweight-normal-label {
+    font-weight: normal;
+    font-style: normal;
+  }
+  #fontweight-bold-label {
+    font-weight: bold;
+    font-style: normal;
+  }
+  #fontweight-italic-label {
+    font-weight: normal;
+    font-style: italic;
+  }
+  #fontweight-bolditalic-label {
+    font-weight: bold;
+    font-style: italic;
+  }
+  #logo {
+    margin-top: 1em;
+    clear: both;
+    display: block;
+  }
+  #logo label {
+    display: inline;
+    margin-left: 0em;
+    margin-right: 1em;
+    font-weight: normal;
+  }
   .overlay {
     cursor: pointer;
     float: left;
@@ -49,9 +87,9 @@ $editor-width: 345px;
     background-color: rgb( 52, 152, 219 );
     color: rgb( 52, 152, 219 );
   }
-  .overlay-orange {
-    background-color: rgb( 255, 140, 0 );
-    color: rgb( 255, 140, 0 );
+  .overlay-darkblue {
+    background-color: rgb( 6, 62, 116 );
+    color: rgb( 6, 62, 116 );
   }
   .overlay-active {
     color: #fff;

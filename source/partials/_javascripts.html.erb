@@ -6,12 +6,16 @@ var MEME = MEME || {};
 MEME.SVG = ( function ( $ ) {
 
   // Configure me if you want
-  var watermark       = '',
+  var watermarkLight  = '/images/ProPublica-132-white.png',
+      watermarkDark   = '/images/ProPublica-132-black.png',
+      watermarkNone   = '',
       fontSizeSmall   = '14pt',
       fontSizeDefault = '18pt',
       fontSizeLarge   = '24pt',
       fontSizeHuge    = '36pt',
-      fontFamilyDefault = 'Helvetica';
+      fontWeightDefault = 'normal',
+      fontStyleDefault = 'normal',
+      fontFamilyDefault = 'Myriad Pro';
 
 
   // Variables
@@ -22,8 +26,11 @@ MEME.SVG = ( function ( $ ) {
       context      = canvas.getContext( '2d' ),
       download     = document.getElementById( 'download' ),
       fontSize     = fontSizeDefault,
+      fontWeight   = fontWeightDefault,
+      fontStyle    = fontStyleDefault,
       fontFamily   = fontFamilyDefault,
       img          = document.getElementById( 'image-storage' ),
+      watermark    = watermarkLight,
       overlay      = true,
       overlayColor = 'blue',
       lineHeight   = 28,
@@ -41,7 +48,7 @@ MEME.SVG = ( function ( $ ) {
     canvas.height = canvasHeight;
     // Set up context defaults
     context.textBaseline = 'top';
-    context.font         = 'normal ' + fontSizeDefault + ' ' + fontFamilyDefault;
+    context.font         = fontStyleDefault + ' ' + fontWeightDefault + ' ' + fontSizeDefault + ' ' + fontFamilyDefault;
     context.fillStyle    = 'white';
     // Add canvas
     context.drawImage( img, 0, 0 );
@@ -145,10 +152,10 @@ MEME.SVG = ( function ( $ ) {
     // Show user the color is active
     if ( overlayColor == 'black' ) {
       context.fillStyle = "rgba( 0, 0, 0, 0.6 )"; // Black
-    } else if ( overlayColor == 'orange' ) {
-      context.fillStyle = "rgba( 255, 140, 0, 0.6 );" // Orangish
+    } else if ( overlayColor == 'darkblue' ) {
+      context.fillStyle = "rgba( 6, 62, 116, 0.6 );" // darkblue
     } else {
-      context.fillStyle = "rgba( 52, 152, 219, 0.6 )"; // Vox blue
+      context.fillStyle = "rgba( 153, 153, 153, 0.6 )"; // ProPublica gray
     }
     // Fill the canvas with the color yo
     context.fill();
@@ -171,7 +178,7 @@ MEME.SVG = ( function ( $ ) {
     img.onload = function() {
       context.globalAlpha = 0.8;
       context.fillStyle = 'white';
-      context.drawImage( img, 620, 290, 100, 50 );
+      context.drawImage( img, 590, 320, 132, 22 );
       context.globalAlpha = 1; // reset transparency
     }
     // Load the watermark
@@ -188,7 +195,7 @@ MEME.SVG = ( function ( $ ) {
         maxWidth = 550,
         x = 45,
         y = 45;
-    context.font = fontSize + ' ' + fontFamily;
+    context.font = fontStyle + ' ' + fontWeight + ' ' + fontSize + ' ' + fontFamily;
     context.textAlign = 'left';
     context.fillStyle = 'white';
     // Adds text shadow
@@ -227,6 +234,53 @@ MEME.SVG = ( function ( $ ) {
     // Create that credit
     context.fillText( text, 45, 322 );
   }
+
+  var handleFontWeight = function () {
+    var size = $( '#fontweight input:checked' ).val();
+    switch( size ) {
+      case 'normal':
+          fontWeight = 'normal';
+          fontStyle  = 'normal';
+          break;
+      case 'bold':
+          fontWeight = 'bold';
+          fontStyle  = 'normal';
+          break;
+      case 'italic':
+          fontWeight = 'normal';
+          fontStyle  = 'italic';
+          break;
+      case 'bolditalic':
+          fontWeight = 'bold';
+          fontStyle  = 'italic';
+          break;
+      default:
+          fontWeight = fontWeightDefault;
+          fontStyle  = fontStyleDefault;
+    }
+    fontWeight = fontWeight;
+    fontStyle  = fontStyle;
+    addCanvas();
+  }
+  var handleLogo = function () {
+    var logoStyle = $( '#logo input:checked' ).val();
+    switch( logoStyle ) {
+      case 'light':
+          watermark = watermarkLight;
+          break;
+      case 'dark':
+          watermark = watermarkDark;
+          break;
+      case 'none':
+          watermark = watermarkNone;
+          break;
+      default:
+          watermark = watermarkLight;
+    }
+    watermark = watermark;
+    addCanvas();
+  }
+
 
   /**
    * Change font size based on data attribute of option elements
@@ -371,7 +425,9 @@ MEME.SVG = ( function ( $ ) {
 
     $( '.overlay' ).on( 'click', handleOverlay );
     $( '#fontsize' ).on( 'change', handleFontSize );
+    $( '#fontweight' ).on( 'change', handleFontWeight );
     $( '#fontfamily' ).on( 'change', handleFontFamily );
+    $( '#logo' ).on( 'change', handleLogo );
     $( '#fontfamily_freeform' ).on( 'change', { test: 'test' }, handleFontFamily );
     $( '#alignment' ).on( 'change', handleAlignment );
   }
