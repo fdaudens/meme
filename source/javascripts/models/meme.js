@@ -9,6 +9,7 @@ MEME.MemeModel = Backbone.Model.extend({
     creditSize: 12,
     downloadName: 'share',
     fontColor: 'white',
+    fontColorOpts: ['white', 'black'],
     fontFamily: 'Helvetica Neue',
     fontFamilyOpts: ['Helvetica', 'Helvetica Neue', 'Comic Sans MS'],
     fontSize: 24,

@@ -29,6 +29,11 @@ MEME.MemeEditorView = Backbone.View.extend({
       $('#text-align').append(buildOptions(d.textAlignOpts)).show();
     }
 
+    // Build font color options:
+    if (d.fontColorOpts && d.fontColorOpts.length) {
+      $('#font-color').append(buildOptions(d.fontColorOpts)).show();
+    }
+
     // Build font size options:
     if (d.fontSizeOpts && d.fontSizeOpts.length) {
       $('#font-size').append(buildOptions(d.fontSizeOpts)).show();
@@ -72,6 +77,7 @@ MEME.MemeEditorView = Backbone.View.extend({
     'input #headline': 'onHeadline',
     'input #credit': 'onCredit',
     'input #image-scale': 'onScale',
+    'change #font-color': 'onFontColor',
     'change #font-size': 'onFontSize',
     'change #font-family': 'onFontFamily',
     'change #watermark': 'onWatermark',
@@ -97,6 +103,10 @@ MEME.MemeEditorView = Backbone.View.extend({
 
   onTextShadow: function() {
     this.model.set('textShadow', this.$('#text-shadow').prop('checked'));
+  },
+
+  onFontColor: function() {
+    this.model.set('fontColor', this.$('#font-color').val());
   },
 
   onFontSize: function() {
