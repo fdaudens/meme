@@ -1,3 +1,5 @@
+Version adaptée de Vox Media https://github.com/voxmedia/meme pour Radio-Canada
+
 # Meme v.2
 
 Contributors: Yuri Victor, Joshua Benton, Matt Montgomery, Ivar Vong, Steve Peters, Flip Stewart, Greg MacWilliam.
